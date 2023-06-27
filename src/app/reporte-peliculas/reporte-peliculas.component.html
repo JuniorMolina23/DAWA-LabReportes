@@ -1,0 +1,44 @@
+<div class="container">
+    <h1 class="title">Informe de Peliculas</h1>
+</div>
+<div class="container">
+    <div class="container-2">
+        <h2 class="title">Filtrar películas</h2>
+        <div class="form-group">
+            <label for="genero">Género:</label>
+            <select id="genero" class="form-control" [(ngModel)]="filtroGenero" (change)="aplicarFiltros()">
+                <option value="">Todos</option>
+                <option *ngFor="let genero of generos" [value]="genero">{{ genero }}</option>
+            </select>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <h2 class="title">Peliculas</h2>
+</div>
+<div class="container">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Título</th>
+                <th>Género</th>
+                <th>Año de lanzamiento</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let pelicula of peliculasFiltradas">
+                <td>{{ pelicula.titulo }}</td>
+                <td>{{ pelicula.genero }}</td>
+                <td>{{ pelicula.lanzamiento }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="container">
+    <h2 class="title">Exportar informe</h2><br>
+</div>
+<div class="container tex-center">
+    <button class="boton btn btn-danger" (click)="generarPDF()">Exportar a PDF</button>
+    <button class="boton btn btn-success" (click)="generarExcel()">Exportar a Excel</button>
+</div>
